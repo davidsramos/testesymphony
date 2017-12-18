@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="/produto/create" class="btn btn-primary">Novo Produto</a>
+    <hr>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+            <tr>
+                <th scope="row">{{ produto.id }}</th>
+                <td>{{ produto.codigoProduto }}</td>
+                <td>{{ produto.nomeProduto }}</td>
+                <td>{{ produto.valorProduto }}</td>
+                <td>
+                    <a href="/produto/edit/{{ produto.id }}" class="btn btn-warning">                        
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </a>
+                    <a href="/produto/delete/{{ produto.id }}" class="btn btn-danger">                        
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>    
+            {% endfor %}       
+        </tbody>
+    </table>
+{% endblock %}

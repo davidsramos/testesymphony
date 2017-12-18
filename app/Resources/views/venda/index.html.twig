@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="/venda/create" class="btn btn-primary">Nova Venda</a>
+    <hr>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Pessoa</th>
+                <th>Numero</th>
+                <th>Data Emissao</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venda in vendas %}
+            <tr>
+                <th scope="row">{{ venda.id }}</th>
+                <td>{{ venda.pessoa }}</td>
+                <td>{{ venda.numero }}</td>
+                <td>{{ venda.dataEmissao }}</td>
+                <td>{{ venda.total }}</td>
+                <td>
+                    <a href="/venda/edit/{{ venda.id }}" class="btn btn-warning">                        
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </a>
+                    <a href="/venda/delete/{{ venda.id }}" class="btn btn-danger">                        
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>    
+            {% endfor %}       
+        </tbody>
+    </table>
+{% endblock %}
